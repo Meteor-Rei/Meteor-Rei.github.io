@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>西纳普斯</title>
+        <subtitle>一篇博客</subtitle>
+        <icon>https://github.com/Meteor-Rei/Meteor-Rei.github.io/images/favicon.ico</icon>
+        <link>https://github.com/Meteor-Rei/Meteor-Rei.github.io</link>
+        <author>
+          <name>Meteor Rei</name>
+        </author>
+        <description>一个上大学的朋友罢了</description>
+        <language>zh-CN</language>
+        <pubDate>Sat, 26 Sep 2020 17:49:32 +0800</pubDate>
+        <lastBuildDate>Sat, 26 Sep 2020 17:49:32 +0800</lastBuildDate>
+        <category term="计算机" />
+        <category term="文学" />
+        <item>
+            <guid isPermalink="true">https://github.com/Meteor-Rei/Meteor-Rei.github.io/hello-world/</guid>
+            <title>Hello World</title>
+            <link>https://github.com/Meteor-Rei/Meteor-Rei.github.io/hello-world/</link>
+            <pubDate>Sat, 26 Sep 2020 17:49:32 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;你好&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#你好&#34;&gt;#&lt;/a&gt; 你好&lt;/h1&gt;
+&lt;p&gt;第一条博客， 怎么说？&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
