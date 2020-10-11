@@ -8,9 +8,129 @@
     <author>
       <name>Meteor Rei</name>
     </author>
-    <updated>2020-10-03T06:42:25.000Z</updated>
+    <updated>2020-10-11T12:46:25.000Z</updated>
     <category term="计算机" />
     <category term="文学" />
+    <entry>
+        <id>https://github.com/Meteor-Rei/Meteor-Rei.github.io/Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8C%85%E8%A3%85%E7%B1%BB/</id>
+        <title>Java基本类型和封装类</title>
+        <link rel="alternate" href="https://github.com/Meteor-Rei/Meteor-Rei.github.io/Java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;​	今天在写算法题的时候，发现了一个 javaSE 的问题，就是关于基本数据类型和其封装类之间的关系，在转换之间出现了一些困惑。&lt;/p&gt;
+&lt;p&gt;以下为其截图。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2020/10/06/7gLDsVYhMaJtycB.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;(第一层括弧实际是定义了一个匿名内部类 (Anonymous Inner Class)，第二层括弧实际上是一个实例初始化块 (instance initializer block)，这个块在内部匿名类构造时被执行)&lt;/p&gt;
+&lt;p&gt;​	在上面可以看到，我们的 new char&lt;span a,b,c=&#34;&#34;&gt;&lt;/span&gt; 并不能够被自动转化为 new Character&lt;span a,=&#34;&#34; b,=&#34;&#34; c=&#34;&#34;&gt;&lt;/span&gt;，而前面的 char 字段则可以，这让我有些疑惑，于是我便又回顾了 javaSE 部分终于的到解答。&lt;/p&gt;
+&lt;h1 id=&#34;基本数据类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本数据类型&#34;&gt;#&lt;/a&gt; 基本数据类型&lt;/h1&gt;
+&lt;p&gt;​	那么我们先来看看 java 的基本数据类型，我们能快速的想到 int double 这些我们以前在其他语言就认识的老朋友。怎么说呢，java 作为一个面向对象的编程语言，这种基本数据类型并不具备对象的性质，没有方法和一些属性。根据网上说法，这是为了顺应大众的习惯，并且有些简单问题的确可以快速的解决。&lt;/p&gt;
+&lt;p&gt;​	这里就先介绍一下这些基本数据类型吧&lt;/p&gt;
+&lt;h2 id=&#34;1byte&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1byte&#34;&gt;#&lt;/a&gt; 1.byte&lt;/h2&gt;
+&lt;p&gt;占的位数：byte 数据类型占八位；&lt;/p&gt;
+&lt;p&gt;最小值为：-128（-2^7）；&lt;/p&gt;
+&lt;p&gt;最大值为：127（2^7-1）；&lt;/p&gt;
+&lt;p&gt;默认值为：0；&lt;/p&gt;
+&lt;h2 id=&#34;2short&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2short&#34;&gt;#&lt;/a&gt; 2.short&lt;/h2&gt;
+&lt;p&gt;占的位数：short 数据类型占 16 位；&lt;/p&gt;
+&lt;p&gt;最小值为：-32768（-2^15）；&lt;/p&gt;
+&lt;p&gt;最大值为：32767（2^15 - 1）；&lt;/p&gt;
+&lt;p&gt;默认值为：0；&lt;/p&gt;
+&lt;h2 id=&#34;3int&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3int&#34;&gt;#&lt;/a&gt; 3.int&lt;/h2&gt;
+&lt;p&gt;占的位数：int 数据类型占 32 位；&lt;/p&gt;
+&lt;p&gt;最小值为：-2,147,483,648（-2^31）；&lt;/p&gt;
+&lt;p&gt;最大值为：2,147,483,647（2^31 - 1）；&lt;/p&gt;
+&lt;p&gt;默认值为：0；&lt;/p&gt;
+&lt;p&gt;一般整型变量默认为 int 型；&lt;/p&gt;
+&lt;h2 id=&#34;4long&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4long&#34;&gt;#&lt;/a&gt; &lt;strong&gt;4.long&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;占的位数：long 数据类型占 64 位；&lt;/p&gt;
+&lt;p&gt;最小值为：-9,223,372,036,854,775,808（-2^63）；&lt;/p&gt;
+&lt;p&gt;最大值为：9,223,372,036,854,775,807（2^63 -1）；&lt;/p&gt;
+&lt;p&gt;默认值为：0L；&lt;/p&gt;
+&lt;h2 id=&#34;5float&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5float&#34;&gt;#&lt;/a&gt; &lt;strong&gt;5.float&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;占的位数：单精度，占 32 位；&lt;/p&gt;
+&lt;p&gt;最小值为：1.4E - 45；&lt;/p&gt;
+&lt;p&gt;最大值为：3.4028235E38;&lt;/p&gt;
+&lt;p&gt;默认值为：0.0f；&lt;/p&gt;
+&lt;h2 id=&#34;6double&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6double&#34;&gt;#&lt;/a&gt; &lt;strong&gt;6.double&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;占的位数：双精度，占 64 位；&lt;/p&gt;
+&lt;p&gt;最小值为：4.9E-324；&lt;/p&gt;
+&lt;p&gt;最大值为：1.7976931348623157E308；&lt;/p&gt;
+&lt;p&gt;默认值为：0.0d；&lt;/p&gt;
+&lt;h2 id=&#34;7-char&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7-char&#34;&gt;#&lt;/a&gt; 7. char&lt;/h2&gt;
+&lt;p&gt;占的位数：char 类型是一个单一的 16 位 Unicode 字符；&lt;/p&gt;
+&lt;p&gt;最小值： \u0000（即为 0）；&lt;/p&gt;
+&lt;p&gt;最大值： \uffff（即为 65,535）；&lt;/p&gt;
+&lt;p&gt;char 数据类型可以存储任何字符；&lt;/p&gt;
+&lt;h2 id=&#34;8boolean&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#8boolean&#34;&gt;#&lt;/a&gt; 8.boolean&lt;/h2&gt;
+&lt;p&gt;两个取值：false 和 true；&lt;/p&gt;
+&lt;p&gt;默认值：false；&lt;/p&gt;
+&lt;p&gt;占的位数：好像很复杂，这个东西。&lt;/p&gt;
+&lt;h1 id=&#34;封装类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#封装类&#34;&gt;#&lt;/a&gt; 封装类&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;基本数据类型&lt;/th&gt;
+&lt;th&gt;封装类&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;byte&lt;/td&gt;
+&lt;td&gt;Byte&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;short&lt;/td&gt;
+&lt;td&gt;Short&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;Integer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long&lt;/td&gt;
+&lt;td&gt;Long&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td&gt;Float&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;double&lt;/td&gt;
+&lt;td&gt;Double&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;char&lt;/td&gt;
+&lt;td&gt;Character&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td&gt;Boolean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;虽然在有些地方，我们看起来并没有用到封装类，但是基本上我们都一直在用，就比如最常用的各种数据结构中的泛型中，我们需要放入各种对象类。但是在实际运用中，我们在装入数据时可以通过装入其基本数据类型实现。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2020/10/06/7gLDsVYhMaJtycB.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;上图中的字符 c 正是完成了这个过程，所以这中间发生了什么呢。&lt;/p&gt;
+&lt;h2 id=&#34;拆箱和装箱&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#拆箱和装箱&#34;&gt;#&lt;/a&gt; 拆箱和装箱&lt;/h2&gt;
+&lt;p&gt;如果按照规范，要创建一个 Integer 对象，我们按照创建类的格式。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt; integer &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;但是现在 java 提供了自动装箱的功能:&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt; integer &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;同理，也存在着自动拆箱:&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;integer&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;//i=10&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;所以，可以看出在现在 java 使用中，我们可以自动的将基本类型转换为其包装类，也可以把包装类在转化为基本类型。&lt;/p&gt;
+&lt;p&gt;然后其实其实现过程是分别调用了&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;valueOf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;token comment&#34;&gt;// 装箱&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;integer&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;intValue&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;             &lt;span class=&#34;token comment&#34;&gt;// 拆箱&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;其中两者都不难理解，但是 valueOf () 方法的实现比较有意思。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; low &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; high&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt; cache&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;// high value may be configured by property&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; h &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt; integerCacheHighPropValue &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        sun&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;misc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;VM&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;getSavedProperty&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;java.lang.Integer.IntegerCache.high&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;integerCacheHighPropValue &lt;span class=&#34;token operator&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;parseInt&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;integerCacheHighPropValue&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            i &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// Maximum array size is Integer.MAX_VALUE&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            h &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MAX_VALUE &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;low&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;NumberFormatException&lt;/span&gt; nfe&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// If the property cannot be parsed into an int, ignore it.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    high &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; h&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    cache &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;high &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; low&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; j &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; low&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; k &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; k &lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt; cache&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;length&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; k&lt;span class=&#34;token operator&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        cache&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;k&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;j&lt;span class=&#34;token operator&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;// range [-128, 127] must be interned (JLS7 5.1.7)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;assert&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;high &lt;span class=&#34;token operator&#34;&gt;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 可以看出 Integer 包装类也是有缓冲池的。&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;valueOf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; i&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;i &lt;span class=&#34;token operator&#34;&gt;&gt;=&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;low &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;high&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;cache&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;i &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;IntegerCache&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;low&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Integer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h1 id=&#34;问题解答&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#问题解答&#34;&gt;#&lt;/a&gt; 问题解答&lt;/h1&gt;
+&lt;p&gt;最终说了这么多，今天遇到的问题始终还是没有很好解答，为什么我的 Character 没有自动转换呢？其实如果我们仔细看看就可以知道。&lt;/p&gt;
+&lt;p&gt;HashMap&amp;lt;&amp;gt;() 的 &amp;lt;&amp;gt; 需要存放对象的原因是，需要我们提供 hashcode () 和 equals () 方法，如果我们想存放我们自定义的类，我们也需要自己重写 hashcode () 和 equals () 方法，这就是为什么不支持基本数据类型的原因 (需要装箱)。&lt;/p&gt;
+&lt;p&gt;然后再来看看 java 中的数组，数组这个东西在 java 中是似乎可以看成对象的。&lt;/p&gt;
+&lt;p&gt;首先&lt;/p&gt;
+&lt;p&gt;1. 数组本身也具有 hashcode () 和 equals () 方法&lt;/p&gt;
+&lt;p&gt;2. 数组是可以向上转换为 Object 类型。&lt;/p&gt;
+&lt;p&gt;3. 同时也符合引用这一概念。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以现在似乎可以得出答案了：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	这里首先识别到的不会是我的 char 数组中的 char，而是整个数组。由于数组可以被 HashMap 所识别为对象，不会搞什么自动装箱 (数组也没有装箱这一说), 所以最后只能提示参数类型错误。&lt;/p&gt;
+</content>
+        <category term="javaSE" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/javaSE/" />
+        <updated>2020-10-11T12:46:25.000Z</updated>
+    </entry>
     <entry>
         <id>https://github.com/Meteor-Rei/Meteor-Rei.github.io/computer-science/spring5/spring5-8-%E4%BA%8B%E5%8A%A1/</id>
         <title>spring5-8 事务</title>
@@ -65,7 +185,7 @@
 &lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 配置 aop 织入事务 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token namespace&#34;&gt;aop:&lt;/span&gt;config&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token namespace&#34;&gt;aop:&lt;/span&gt;pointcut&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;txPointcut&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;expression&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;execution(* com.kuang.dao.*.*(..))&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token namespace&#34;&gt;aop:&lt;/span&gt;advisor&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;advice-ref&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;txAdvice&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;pointcut-ref&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;txPointcut&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;token namespace&#34;&gt;aop:&lt;/span&gt;config&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-03T06:42:25.000Z</updated>
     </entry>
     <entry>
@@ -110,7 +230,7 @@
 </content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-03T01:46:25.000Z</updated>
     </entry>
     <entry>
@@ -161,7 +281,7 @@
 &lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 第三种方式：注解实现 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;bean&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;annotationPointcut&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;com.Meteor.config.AnnotationPointcut&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token namespace&#34;&gt;aop:&lt;/span&gt;aspectj-autoproxy&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!--&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	通过 aop 命名空间的 &amp; lt;aop:aspectj-autoproxy /&gt; 声明自动为 spring 容器中那些配置 @aspectJ 切面的 bean 创建代理，织入切面。当然，spring 在内部依旧采用 AnnotationAwareAspectJAutoProxyCreator 进行自动代理的创建工作，但具体实现的细节已经被 &amp; lt;aop:aspectj-autoproxy /&gt; 隐藏起来了&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	可以理解为实现了&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&amp;lt;aop:config&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &amp;lt;aop:aspect ref=&#34;annotationPointCut&#34;/&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &amp;lt;/aop:config&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;--&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-02T10:42:25.000Z</updated>
     </entry>
     <entry>
@@ -217,7 +337,7 @@
 </content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-02T07:58:25.000Z</updated>
     </entry>
     <entry>
@@ -356,7 +476,7 @@
 </content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-02T02:46:25.000Z</updated>
     </entry>
     <entry>
@@ -420,7 +540,7 @@
 </content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-01T14:41:25.000Z</updated>
     </entry>
     <entry>
@@ -469,7 +589,7 @@
 &lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token annotation punctuation&#34;&gt;@Test&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token class-name&#34;&gt;ApplicationContext&lt;/span&gt; context &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;ClassPathXmlApplicationContext&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;beans.xml&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token class-name&#34;&gt;UserServiceImpl&lt;/span&gt; serviceImpl &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;UserServiceImpl&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;getBean&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;UserServiceImpl&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   serviceImpl&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;work&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-01T13:46:00.000Z</updated>
     </entry>
     <entry>
@@ -509,7 +629,7 @@
 </content>
         <category term="计算机科学" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/" />
         <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/categories/computer-science/spring5/" />
-        <category term="java" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/java/" />
+        <category term="spring5" scheme="https://github.com/Meteor-Rei/Meteor-Rei.github.io/tags/spring5/" />
         <updated>2020-10-01T12:46:25.000Z</updated>
     </entry>
     <entry>
